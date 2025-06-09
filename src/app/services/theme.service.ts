@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 export interface ThemeSettings {
   darkMode: boolean;
@@ -19,12 +19,22 @@ export class ThemeService {
 
   private settingsSubject = new BehaviorSubject<ThemeSettings>(this.defaultSettings);
   settings$ = this.settingsSubject.asObservable();
+  
+  // Observable pour le mode sombre
+  isDarkTheme$: Observable<boolean> = this.settings$.pipe(
+    map(settings => settings.darkMode)
+  );
 
   constructor() {
     this.loadSettings();
     this.applyTheme();
   }
 
+  // Basculer entre le mode clair et sombre (alias pour compatibilité)
+  toggleTheme(): void {
+    this.toggleDarkMode();
+  }
+  
   // Basculer entre le mode clair et sombre
   toggleDarkMode(): void {
     const currentSettings = this.settingsSubject.value;

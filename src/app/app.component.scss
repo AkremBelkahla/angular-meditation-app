@@ -1,0 +1,121 @@
+// Styles pour le composant principal de l'application
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: theme('colors.white');
+  color: theme('colors.neutral.dark');
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  &.dark-theme {
+    background-color: theme('colors.neutral.darkest');
+    color: theme('colors.white');
+  }
+}
+
+.app-header {
+  padding: 1rem 0;
+  border-bottom: 1px solid theme('colors.neutral.light');
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    span.material-icons {
+      font-size: 2rem;
+      color: theme('colors.primary.DEFAULT');
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: theme('colors.neutral.DEFAULT');
+    transition: background-color 0.2s ease, color 0.2s ease;
+    
+    &:hover {
+      background-color: theme('colors.neutral.light');
+      color: theme('colors.primary.DEFAULT');
+    }
+    
+    .material-icons {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.app-content {
+  flex: 1;
+  padding: 2rem 0;
+  
+  > * {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+.app-footer {
+  padding: 1rem 0;
+  border-top: 1px solid theme('colors.neutral.light');
+  font-size: 0.875rem;
+  text-align: center;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+// Styles pour le thème sombre
+:host-context(.dark-theme) {
+  .app-header {
+    border-bottom-color: theme('colors.neutral.dark');
+    
+    .logo span.material-icons {
+      color: theme('colors.primary.light');
+    }
+    
+    .theme-toggle {
+      color: theme('colors.neutral.light');
+      
+      &:hover {
+        background-color: theme('colors.neutral.dark');
+        color: theme('colors.primary.light');
+      }
+    }
+  }
+  
+  .app-footer {
+    border-top-color: theme('colors.neutral.dark');
+  }
+}
