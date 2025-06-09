@@ -1,0 +1,7 @@
+<div class="breath-animation-container">
+  <div class="breath-circle" [ngClass]="{'inhale': breathPhase === 'inhale', 'exhale': breathPhase === 'exhale'}">
+    <div class="inner-circle">
+      <span class="breath-text">{{ breathPhase === 'inhale' ? 'Inspirez' : 'Expirez' }}</span>
+    </div>
+  </div>
+</div>

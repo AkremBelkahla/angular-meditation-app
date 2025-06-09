@@ -1,0 +1,61 @@
+.breath-animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.breath-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, theme('colors.primary.light'), theme('colors.primary.DEFAULT'));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  transition: transform 4s ease-in-out;
+  position: relative;
+  
+  &.inhale {
+    transform: scale(1.2);
+  }
+  
+  &.exhale {
+    transform: scale(0.8);
+  }
+}
+
+.inner-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.breath-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: theme('colors.primary.DEFAULT');
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  @media (max-width: 640px) {
+    font-size: 1.2rem;
+  }
+}
+
+:host-context(.dark) {
+  .inner-circle {
+    background-color: rgba(31, 41, 55, 0.9);
+  }
+  
+  .breath-text {
+    color: theme('colors.primary.light');
+  }
+}

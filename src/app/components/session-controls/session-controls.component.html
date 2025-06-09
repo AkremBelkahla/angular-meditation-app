@@ -1,0 +1,63 @@
+<div class="session-controls">
+  <div class="timer-display">
+    <div class="timer">{{ formattedTime }}</div>
+    <div class="session-phase">{{ sessionState === 'running' ? (breathPhase === 'inhale' ? 'Inspirez' : 'Expirez') : 'Prêt' }}</div>
+  </div>
+
+  <div class="controls-container">
+    <!-- Contrôles de session -->
+    <div class="session-buttons">
+      @if (sessionState === 'idle') {
+        <button class="btn btn-primary" (click)="startSession()">
+          <span class="material-icons">play_arrow</span>
+          Commencer
+        </button>
+      } @else if (sessionState === 'running') {
+        <button class="btn btn-outline" (click)="pauseSession()">
+          <span class="material-icons">pause</span>
+          Pause
+        </button>
+        <button class="btn btn-outline" (click)="stopSession()">
+          <span class="material-icons">stop</span>
+          Arrêter
+        </button>
+      } @else if (sessionState === 'paused') {
+        <button class="btn btn-primary" (click)="resumeSession()">
+          <span class="material-icons">play_arrow</span>
+          Reprendre
+        </button>
+        <button class="btn btn-outline" (click)="stopSession()">
+          <span class="material-icons">stop</span>
+          Arrêter
+        </button>
+      }
+    </div>
+
+    <!-- Sélecteur de durée (visible uniquement en mode idle) -->
+    @if (sessionState === 'idle') {
+      <div class="duration-selector">
+        <h3>Durée de la session</h3>
+        <div class="duration-buttons">
+          <button 
+            class="duration-btn" 
+            [class.active]="selectedDuration === 120"
+            (click)="setDuration(120)">
+            2 min
+          </button>
+          <button 
+            class="duration-btn" 
+            [class.active]="selectedDuration === 300"
+            (click)="setDuration(300)">
+            5 min
+          </button>
+          <button 
+            class="duration-btn" 
+            [class.active]="selectedDuration === 600"
+            (click)="setDuration(600)">
+            10 min
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
