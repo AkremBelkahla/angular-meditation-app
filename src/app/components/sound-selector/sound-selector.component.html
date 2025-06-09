@@ -1,0 +1,32 @@
+<div class="sound-selector">
+  <h3>Sons ambiants</h3>
+  
+  <div class="sound-list">
+    @for (sound of sounds; track sound.id) {
+      <div 
+        class="sound-item" 
+        [class.active]="sound.id === selectedSound?.id"
+        (click)="selectSound(sound.id)">
+        <span class="material-icons">{{ sound.icon }}</span>
+        <span class="sound-name">{{ sound.name }}</span>
+      </div>
+    }
+  </div>
+  
+  <div class="volume-controls">
+    <div class="volume-slider-container">
+      <span class="material-icons volume-icon" (click)="toggleMute()">
+        {{ isMuted ? 'volume_off' : volume === 0 ? 'volume_mute' : volume < 0.5 ? 'volume_down' : 'volume_up' }}
+      </span>
+      <input 
+        type="range" 
+        min="0" 
+        max="1" 
+        step="0.01" 
+        [value]="volume" 
+        (input)="onVolumeChange($event)"
+        [disabled]="isMuted"
+        class="volume-slider">
+    </div>
+  </div>
+</div>

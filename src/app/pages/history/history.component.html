@@ -1,0 +1,110 @@
+<div class="history-page">
+  <div class="container py-8">
+    <header class="text-center mb-6">
+      <h1 class="text-2xl md:text-3xl font-bold text-primary">Historique des Sessions</h1>
+    </header>
+
+    <div class="history-container">
+      <div class="card mb-8">
+        <h2 class="text-xl font-semibold mb-4">Statistiques</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-item">
+            <div class="stat-value">{{ stats.totalSessions }}</div>
+            <div class="stat-label">Sessions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ stats.totalMinutes }}</div>
+            <div class="stat-label">Minutes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ stats.currentStreak }}</div>
+            <div class="stat-label">Série actuelle</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ stats.longestStreak }}</div>
+            <div class="stat-label">Record</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-8">
+        <h2 class="text-xl font-semibold mb-4">Activité hebdomadaire</h2>
+        <div class="weekly-chart">
+          <div class="chart-container">
+            @for (day of weeklyActivity; track day.date) {
+              <div class="day-column">
+                <div class="bar-container">
+                  <div 
+                    class="activity-bar" 
+                    [style.height.%]="day.percentage"
+                    [class.has-activity]="day.minutes > 0">
+                  </div>
+                </div>
+                <div class="day-label">{{ day.label }}</div>
+                <div class="minutes-label" *ngIf="day.minutes > 0">{{ day.minutes }} min</div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-4">Sessions récentes</h2>
+        
+        @if (sessions.length === 0) {
+          <div class="empty-state">
+            <p>Vous n'avez pas encore effectué de session de méditation.</p>
+            <button 
+              class="btn btn-primary mt-4"
+              (click)="navigateToSession()">
+              Commencer votre première session
+            </button>
+          </div>
+        } @else {
+          <div class="sessions-list">
+            @for (session of sessions; track session.id) {
+              <div class="session-item">
+                <div class="session-date">
+                  {{ formatDate(session.date) }}
+                </div>
+                <div class="session-details">
+                  <div class="session-duration">
+                    {{ formatDuration(session.duration) }}
+                  </div>
+                  <div class="session-status" [class.completed]="session.completed">
+                    {{ session.completed ? 'Terminée' : 'Partielle' }}
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+          
+          @if (sessions.length >= 10) {
+            <div class="text-center mt-4">
+              <button 
+                class="btn btn-outline"
+                (click)="loadMoreSessions()">
+                Voir plus
+              </button>
+            </div>
+          }
+        }
+      </div>
+      
+      <div class="actions text-center mt-8">
+        <button 
+          class="btn btn-outline"
+          (click)="navigateToHome()">
+          <span class="material-icons">home</span>
+          Retour à l'accueil
+        </button>
+        <button 
+          class="btn btn-primary ml-4"
+          (click)="navigateToSession()">
+          <span class="material-icons">play_circle</span>
+          Nouvelle session
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

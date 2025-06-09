@@ -1,0 +1,190 @@
+.history-page {
+  min-height: 100%;
+  padding-bottom: 2rem;
+}
+
+.history-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: theme('colors.primary.DEFAULT');
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    color: theme('colors.neutral.DEFAULT');
+    font-weight: 500;
+  }
+}
+
+.weekly-chart {
+  padding: 1rem 0;
+  
+  .chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 150px;
+  }
+  
+  .day-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .bar-container {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .activity-bar {
+    width: 60%;
+    background-color: theme('colors.neutral.light');
+    border-radius: 4px 4px 0 0;
+    
+    &.has-activity {
+      background-color: theme('colors.primary.DEFAULT');
+    }
+  }
+  
+  .day-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    color: theme('colors.neutral.dark');
+  }
+  
+  .minutes-label {
+    font-size: 0.7rem;
+    color: theme('colors.primary.DEFAULT');
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+}
+
+.sessions-list {
+  .session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid theme('colors.neutral.light');
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .session-date {
+    font-weight: 500;
+  }
+  
+  .session-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .session-duration {
+    font-weight: 500;
+    color: theme('colors.neutral.dark');
+  }
+  
+  .session-status {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    background-color: theme('colors.neutral.light');
+    color: theme('colors.neutral.dark');
+    
+    &.completed {
+      background-color: theme('colors.primary.light');
+      color: theme('colors.primary.dark');
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: theme('colors.neutral.DEFAULT');
+}
+
+.actions {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    
+    .material-icons {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+:host-context(.dark) {
+  .stat-item {
+    .stat-value {
+      color: theme('colors.primary.light');
+    }
+    
+    .stat-label {
+      color: theme('colors.neutral.light');
+    }
+  }
+  
+  .weekly-chart {
+    .activity-bar {
+      background-color: theme('colors.neutral.DEFAULT');
+      
+      &.has-activity {
+        background-color: theme('colors.primary.light');
+      }
+    }
+    
+    .day-label {
+      color: theme('colors.neutral.light');
+    }
+    
+    .minutes-label {
+      color: theme('colors.primary.light');
+    }
+  }
+  
+  .sessions-list {
+    .session-item {
+      border-bottom-color: theme('colors.neutral.DEFAULT');
+    }
+    
+    .session-duration {
+      color: theme('colors.neutral.light');
+    }
+    
+    .session-status {
+      background-color: theme('colors.neutral.DEFAULT');
+      color: theme('colors.neutral.light');
+      
+      &.completed {
+        background-color: theme('colors.primary.dark');
+        color: theme('colors.white');
+      }
+    }
+  }
+}

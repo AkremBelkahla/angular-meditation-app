@@ -1,0 +1,30 @@
+<div class="session-page">
+  <div class="container py-8">
+    <header class="text-center mb-6">
+      <h1 class="text-2xl md:text-3xl font-bold text-primary">Session de Méditation</h1>
+    </header>
+
+    <div class="session-container">
+      <div class="animation-container">
+        <app-breath-animation></app-breath-animation>
+      </div>
+      
+      <div class="controls-container">
+        <app-session-controls></app-session-controls>
+      </div>
+      
+      <div class="sound-container card mt-8">
+        <app-sound-selector></app-sound-selector>
+      </div>
+      
+      <div class="actions text-center mt-8">
+        <button 
+          class="btn btn-outline"
+          (click)="navigateToHome()">
+          <span class="material-icons">home</span>
+          Retour à l'accueil
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

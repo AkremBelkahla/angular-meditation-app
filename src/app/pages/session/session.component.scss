@@ -1,0 +1,36 @@
+.session-page {
+  min-height: 100%;
+  padding-bottom: 2rem;
+}
+
+.session-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.animation-container {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 640px) {
+    height: 250px;
+  }
+}
+
+.controls-container {
+  margin-bottom: 2rem;
+}
+
+.actions {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    
+    .material-icons {
+      margin-right: 0.5rem;
+    }
+  }
+}

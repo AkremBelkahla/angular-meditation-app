@@ -1,0 +1,75 @@
+<div class="home-page">
+  <div class="container py-8">
+    <header class="text-center mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">Méditation Zen</h1>
+      <p class="text-lg text-neutral-dark dark:text-neutral-light max-w-2xl mx-auto">
+        Prenez un moment pour vous détendre et vous recentrer avec des sessions de méditation guidées.
+      </p>
+    </header>
+
+    <div class="stats-summary card mb-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.totalSessions }}</div>
+          <div class="stat-label">Sessions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.totalMinutes }}</div>
+          <div class="stat-label">Minutes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.currentStreak }}</div>
+          <div class="stat-label">Série actuelle</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.longestStreak }}</div>
+          <div class="stat-label">Record</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-start card mb-8">
+      <h2 class="text-xl font-semibold mb-4">Démarrage rapide</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <button 
+          class="quick-start-btn"
+          (click)="startQuickSession(120)">
+          <span class="material-icons">timer</span>
+          <span>2 minutes</span>
+        </button>
+        <button 
+          class="quick-start-btn"
+          (click)="startQuickSession(300)">
+          <span class="material-icons">timer</span>
+          <span>5 minutes</span>
+        </button>
+        <button 
+          class="quick-start-btn"
+          (click)="startQuickSession(600)">
+          <span class="material-icons">timer</span>
+          <span>10 minutes</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card mb-8">
+      <h2 class="text-xl font-semibold mb-4">Sons ambiants</h2>
+      <app-sound-selector></app-sound-selector>
+    </div>
+
+    <div class="actions text-center">
+      <button 
+        class="btn btn-primary"
+        (click)="navigateToSession()">
+        <span class="material-icons">play_circle</span>
+        Commencer une session personnalisée
+      </button>
+      <button 
+        class="btn btn-outline ml-4"
+        (click)="navigateToHistory()">
+        <span class="material-icons">history</span>
+        Voir l'historique
+      </button>
+    </div>
+  </div>
+</div>
