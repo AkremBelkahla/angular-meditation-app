@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Angular Material theme */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Global styles for meditation app */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-neutral-light dark:bg-neutral-dark text-neutral-dark dark:text-neutral-light transition-colors duration-300;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Custom animations */
+.breathe-animation {
+  @apply animate-breathe;
+}
+
+/* Custom button styles */
+.btn {
+  @apply px-4 py-2 rounded-md transition-all duration-300 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white dark:bg-neutral-dark shadow-md rounded-lg p-6;
+}
