@@ -2,7 +2,9 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "./projects/**/*.{html,ts}"
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -30,8 +32,17 @@ module.exports = {
           '0%, 100%': { transform: 'scale(0.8)' },
           '50%': { transform: 'scale(1.2)' },
         }
-      }
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+  corePlugins: {
+    preflight: true,
+  }
 }
